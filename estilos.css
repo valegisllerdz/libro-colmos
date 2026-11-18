@@ -105,8 +105,9 @@ h1, h2, h3 { font-family: var(--serif); color: var(--azul); line-height: 1.15; m
   border-radius: var(--radio);
   padding: 18px 12px 12px;
   display: grid; justify-items: center; gap: 6px;
+  margin: 0;
 }
-.ilustracion svg { width: 132px; height: 132px; }
+.ilustracion .colmito { width: 100%; max-width: 300px; height: auto; }
 .ilustracion img { width: 100%; max-height: 220px; object-fit: contain; border-radius: 10px; }
 .ilustracion figcaption { font-size: 14px; color: var(--tenue); }
 
@@ -136,7 +137,6 @@ h1, h2, h3 { font-family: var(--serif); color: var(--azul); line-height: 1.15; m
 .globo.remate::after { right: 30px; }
 
 .borrador {
-  margin-top: auto; padding-top: 14px;
   font-size: 13px; color: var(--tenue);
 }
 .borrador b { color: var(--naranja); }
@@ -149,7 +149,7 @@ h1, h2, h3 { font-family: var(--serif); color: var(--azul); line-height: 1.15; m
   display: flex; flex-direction: column; gap: 14px;
 }
 .portada .inst { font-size: 14px; color: var(--dorado); font-weight: 600; letter-spacing: .02em; }
-.portada h1 { color: #fff; font-size: 40px; margin-top: auto; }
+.portada h1 { color: #fff; font-size: 40px; }
 .portada .sub { font-size: 19px; color: #dfe6f1; }
 .portada .globos { display: grid; gap: 10px; margin: 18px 0; }
 .portada .g { border-radius: 14px; padding: 12px 14px; font-size: 16px; }
@@ -201,7 +201,8 @@ h1, h2, h3 { font-family: var(--serif); color: var(--azul); line-height: 1.15; m
 .cap-portada .numcap { font-family: var(--serif); font-size: 96px; line-height: 1; opacity: .35; }
 .cap-portada h2 { color: #fff; font-size: 38px; }
 .cap-portada p { font-size: 19px; margin: 0; }
-.cap-portada svg { width: 120px; height: 120px; margin-top: auto; align-self: flex-end; opacity: .9; }
+.cap-mascota { margin-top: auto; align-self: flex-end; width: 78%; }
+.cap-mascota .colmito { width: 100%; height: auto; }
 .cap-portada .lista { font-size: 16px; opacity: .9; }
 
 /* ---------- Cierre ---------- */
@@ -213,3 +214,92 @@ h1, h2, h3 { font-family: var(--serif); color: var(--azul); line-height: 1.15; m
 .creditos .mat { font-size: 14px; color: var(--tenue); }
 .cierre .datos { font-size: 15px; color: var(--tenue); margin-top: 16px; }
 .cierre .volver { display: inline-block; margin-top: 14px; color: var(--azul); font-weight: 700; }
+
+/* ---------- Colmito (mascota) ---------- */
+.colmito { display: block; overflow: visible; }
+.colmito.vivo .cuerpo { animation: flota 3.2s ease-in-out infinite; transform-origin: 90px 140px; }
+.colmito.vivo .prop { animation: flota 3.2s ease-in-out infinite reverse; transform-origin: 192px 72px; }
+@keyframes flota { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-4px) rotate(-1.5deg); } }
+@media (prefers-reduced-motion: reduce) { .colmito.vivo .cuerpo, .colmito.vivo .prop { animation: none; } }
+
+.portada .portada-mascota { width: 150px; margin: 4px 0 -4px; }
+.portada .portada-mascota .colmito { width: 100%; height: auto; }
+.portada .cifras { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px; }
+.portada .cifras span { background: rgba(255,255,255,.1); border-radius: 999px; padding: 6px 12px; font-size: 15px; }
+.portada .cifras b { color: var(--dorado); font-family: var(--serif); font-size: 18px; }
+.portada .pie { margin-top: auto; }
+
+.presenta { display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: center; margin: 14px 0 4px;
+  background: var(--crema); border-radius: var(--radio); padding: 10px 14px 10px 6px; }
+.presenta .colmito { width: 96px; height: auto; }
+.presenta p { margin: 0; font-size: 17px; }
+
+/* Interruptor del modo juego (HU-13) */
+.interruptor { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: center; margin-top: 20px;
+  padding: 14px; border: 2px dashed var(--dorado); border-radius: var(--radio); cursor: pointer; }
+.interruptor input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.interruptor .pista { width: 52px; height: 30px; border-radius: 15px; background: #cfd3db; position: relative; transition: background .2s; }
+.interruptor .pista::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .2s; }
+.interruptor input:checked + .pista { background: var(--verde); }
+.interruptor input:checked + .pista::after { transform: translateX(22px); }
+.interruptor input:focus-visible + .pista { outline: 3px solid var(--dorado); outline-offset: 2px; }
+.interruptor small { color: var(--tenue); font-size: 14px; }
+
+/* Remate tapado / revelado */
+button.globo { font: inherit; text-align: left; border: 0; width: calc(100% - 18px); cursor: pointer; display: block; }
+.globo.remate.tapado, .globo.remate.revelado { background: var(--c); }
+.globo.tapado .texto { visibility: hidden; display: block; height: 0; }
+.globo.tapado .tapa { display: block; font-style: normal; font-size: 16px;
+  background: repeating-linear-gradient(-45deg, rgba(255,255,255,.12) 0 10px, transparent 10px 20px); margin: -16px -18px; padding: 16px 18px; border-radius: inherit; }
+.globo.tapado:active { transform: scale(.98); }
+.globo.revelado .tapa { display: none; }
+.globo.revelado .texto { animation: revela .45s cubic-bezier(.2,1.4,.4,1); display: block; }
+.globo.revelado { cursor: default; color: #fff; }
+@keyframes revela { from { opacity: 0; transform: scale(.7) rotate(-3deg); } to { opacity: 1; transform: none; } }
+
+/* Acciones bajo el colmo */
+.acciones { margin-top: auto; padding-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.compartir { display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer;
+  background: transparent; color: var(--azul); font: 600 15px var(--sans); padding: 8px 4px; }
+.compartir svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* Aviso flotante */
+.libro { position: relative; }
+.aviso { position: absolute; left: 50%; bottom: 84px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: var(--tinta); color: #fff; font-size: 15px; padding: 10px 16px; border-radius: 12px; width: max-content; max-width: 88%;
+  transition: opacity .2s, transform .2s; }
+.aviso.visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* Cierre */
+.cierre-cabeza { display: grid; grid-template-columns: 90px 1fr; gap: 10px; align-items: center; }
+.cierre-cabeza .colmito { width: 90px; height: auto; }
+
+/* ============================================================
+   MODO IMPRESIÓN  (?imprimir) — PDF de respaldo, una hoja A5 por página
+   ============================================================ */
+@page { size: 148mm 210mm; margin: 0; }
+.modo-impresion body { display: block; padding: 0; background: #fff; }
+.modo-impresion .colmito.vivo .cuerpo, .modo-impresion .colmito.vivo .prop { animation: none; }
+.imp-pagina { width: 148mm; height: 210mm; overflow: hidden; position: relative; display: flex; flex-direction: column;
+  break-after: page; page-break-after: always; background: #fff; }
+.imp-pagina .hoja { flex: 1; overflow: hidden; padding: 30px 34px 16px; }
+.imp-pagina .portada, .imp-pagina .cap-portada { margin: -30px -34px -16px; padding: 40px 34px; }
+.imp-pagina footer { padding: 10px 34px 16px; font-size: 13px; color: var(--tenue); text-align: center; }
+.imp-pagina .ilustracion .colmito { max-width: 340px; }
+.imp-pagina .indice ol a { padding: 5px 16px; font-size: 15px; }
+.imp-pagina .indice { gap: 10px; }
+.imp-pagina .creditos { gap: 6px; }
+.imp-pagina .creditos li { padding: 7px 12px; }
+.respaldo .hoja { justify-content: center; align-items: center; text-align: center; gap: 10px; }
+.respaldo h2 { font-size: 34px; }
+.respaldo .qr { width: 62mm; height: 62mm; margin: 12px 0; }
+.respaldo .url { font: 700 18px var(--sans); color: var(--azul); margin: 0; }
+.respaldo .nota { font-size: 13px; color: var(--tenue); }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.imp-pagina .empezar { display: none; }
+.imp-pagina .indice { gap: 8px; margin-top: 10px; }
+.imp-pagina .indice .cap > a { padding: 7px 14px; font-size: 16px; }
+.imp-pagina .indice ol { padding: 2px 0; }
+.imp-pagina .indice ol a { padding: 2px 14px; font-size: 14px; }
+.imp-pagina .indice .extra a { padding: 7px 14px; font-size: 14px; }

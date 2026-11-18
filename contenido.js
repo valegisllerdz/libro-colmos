@@ -9,6 +9,7 @@
 //
 //  "origen": "presentacion" = ya aparece en las láminas 7 y 9.
 //            "borrador"     = propuesta nueva, falta validación del equipo (HU-01).
+//  "gesto":  expresión de la mascota Colmito: feliz, risa, sorpresa, cansado, guino, pensativo.
 //  "imagen": ruta opcional a la ilustración de Canva (p. ej. "img/sprint.png").
 //            Si se deja vacía se usa el dibujo provisional ("icono").
 // ============================================================
@@ -28,22 +29,22 @@ window.LIBRO = {
       color: "naranja",
       intro: "Sprints, dailies y backlogs: el marco ágil favorito del salón, visto desde su lado más absurdo.",
       colmos: [
-        { tema: "Sprint", icono: "carrera", origen: "presentacion", imagen: "",
+        { tema: "Sprint", icono: "carrera", gesto: "sorpresa", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de un Sprint?",
           remate: "Llamarse «carrera corta» y durar dos semanas." },
-        { tema: "Scrum Master", icono: "persona", origen: "presentacion", imagen: "",
+        { tema: "Scrum Master", icono: "persona", gesto: "cansado", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de un Scrum Master?",
           remate: "Que no lo dejen quitar sus propios impedimentos." },
-        { tema: "Burndown Chart", icono: "grafica", origen: "presentacion", imagen: "",
+        { tema: "Burndown Chart", icono: "grafica", gesto: "sorpresa", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de un Burndown Chart?",
           remate: "Que se queme todo el Sprint y nadie llame a los bomberos." },
-        { tema: "Daily Scrum", icono: "reloj", origen: "borrador", imagen: "",
+        { tema: "Daily Scrum", icono: "reloj", gesto: "pensativo", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de un Daily Scrum?",
           remate: "Que todos lleguen tarde a una junta de quince minutos." },
-        { tema: "Product Backlog", icono: "lista", origen: "borrador", imagen: "",
+        { tema: "Product Backlog", icono: "lista", gesto: "cansado", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de un Product Backlog?",
           remate: "Tener tantas historias que nadie quiera leerlas." },
-        { tema: "Planning Poker", icono: "cartas", origen: "borrador", imagen: "",
+        { tema: "Planning Poker", icono: "cartas", gesto: "guino", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo del Planning Poker?",
           remate: "Que todo el equipo apueste 13 y nadie quiera enseñar sus cartas." }
       ]
@@ -54,22 +55,22 @@ window.LIBRO = {
       color: "azul",
       intro: "Actas, cronogramas y rutas críticas: la guía clásica de la dirección de proyectos también tiene sus colmos.",
       colmos: [
-        { tema: "Acta de Constitución", icono: "documento", origen: "presentacion", imagen: "",
+        { tema: "Acta de Constitución", icono: "documento", gesto: "pensativo", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de un Acta de Constitución?",
           remate: "Que la firmen cuando el proyecto ya terminó." },
-        { tema: "Diagrama de Gantt", icono: "gantt", origen: "presentacion", imagen: "",
+        { tema: "Diagrama de Gantt", icono: "gantt", gesto: "sorpresa", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de un diagrama de Gantt?",
           remate: "Actualizarlo tanto que ya no se parezca al original." },
-        { tema: "Ruta crítica", icono: "ruta", origen: "borrador", imagen: "",
+        { tema: "Ruta crítica", icono: "ruta", gesto: "cansado", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de la ruta crítica?",
           remate: "Que todos la critiquen y no tenga holgura para defenderse." },
-        { tema: "Holgura", icono: "reloj", origen: "borrador", imagen: "",
+        { tema: "Holgura", icono: "reloj", gesto: "feliz", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de una holgura?",
           remate: "Relajarse tanto que se le acabe el tiempo." },
-        { tema: "Gestión de riesgos", icono: "alerta", origen: "borrador", imagen: "",
+        { tema: "Gestión de riesgos", icono: "alerta", gesto: "sorpresa", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de la gestión de riesgos?",
           remate: "Que el riesgo más grande sea no haber hecho el plan de riesgos." },
-        { tema: "Interesados", icono: "persona", origen: "borrador", imagen: "",
+        { tema: "Interesados", icono: "persona", gesto: "guino", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de un interesado del proyecto?",
           remate: "Estar tan interesado que nadie lo invite a las juntas." }
       ]
@@ -80,22 +81,22 @@ window.LIBRO = {
       color: "verde",
       intro: "Retrospectivas, tableros y entregas pequeñas: hábitos ágiles que, a veces, se ponen de cabeza.",
       colmos: [
-        { tema: "Retrospectiva", icono: "ciclo", origen: "presentacion", imagen: "",
+        { tema: "Retrospectiva", icono: "ciclo", gesto: "risa", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de una Retrospectiva?",
           remate: "Que el único acuerdo sea hacer otra retrospectiva." },
-        { tema: "Tablero Kanban", icono: "kanban", origen: "borrador", imagen: "",
+        { tema: "Tablero Kanban", icono: "kanban", gesto: "cansado", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de un tablero Kanban?",
           remate: "Tener tantas tarjetas «en progreso» que ninguna llegue a «terminado»." },
-        { tema: "Definition of Done", icono: "check", origen: "borrador", imagen: "",
+        { tema: "Definition of Done", icono: "check", gesto: "pensativo", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de la Definition of Done?",
           remate: "Que nunca la terminen de definir." },
-        { tema: "Historia de usuario", icono: "documento", origen: "borrador", imagen: "",
+        { tema: "Historia de usuario", icono: "documento", gesto: "sorpresa", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de una historia de usuario?",
           remate: "Que el usuario no aparezca en su propia historia." },
-        { tema: "MVP", icono: "caja", origen: "borrador", imagen: "",
+        { tema: "MVP", icono: "caja", gesto: "guino", origen: "borrador", imagen: "",
           pregunta: "¿Cuál es el colmo de un Producto Mínimo Viable?",
           remate: "Ser tan mínimo que nadie note que es viable." },
-        { tema: "Libro de colmos", icono: "libro", origen: "presentacion", imagen: "",
+        { tema: "Libro de colmos", icono: "libro", gesto: "risa", origen: "presentacion", imagen: "",
           pregunta: "¿Cuál es el colmo de un libro de colmos?",
           remate: "Que el remate no se pueda escanear." }
       ]
