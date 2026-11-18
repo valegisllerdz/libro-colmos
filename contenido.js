@@ -103,13 +103,13 @@ window.LIBRO = {
     }
   ],
 
-  // Créditos (HU-04 pide nombre y matrícula). Completa las matrículas.
+  // Créditos (HU-04 pide nombre y matrícula). Matrículas tomadas de la portada del acta.
   creditos: [
-    { rol: "Product Owner",             nombre: "Melannie Aileén Reyna Pérez",        matricula: "" },
-    { rol: "Scrum Master / Líder",      nombre: "Maria Fernanda Ramírez Jiménez",     matricula: "" },
-    { rol: "Investigador de contenido", nombre: "Renato Sebastian Martinez Martinez", matricula: "" },
-    { rol: "Diseñador gráfico 1",       nombre: "Jatziri Nataly Valencia Bonilla",    matricula: "" },
-    { rol: "Diseñador gráfico 2",       nombre: "Jose Luis Romero Soto",              matricula: "" },
-    { rol: "QA / Revisor",              nombre: "Valeria Giselle Rodríguez Trinidad", matricula: "" }
+    { rol: "Product Owner",             nombre: "Melannie Aileén Reyna Pérez",        matricula: "2126091" },
+    { rol: "Scrum Master / Líder",      nombre: "Maria Fernanda Ramírez Jiménez",     matricula: "2174000" },
+    { rol: "Investigador de contenido", nombre: "Renato Sebastian Martinez Martinez", matricula: "2050622" },
+    { rol: "Diseñador gráfico 1",       nombre: "Jatziri Nataly Valencia Bonilla",    matricula: "2059507" },
+    { rol: "Diseñador gráfico 2",       nombre: "Jose Luis Romero Soto",              matricula: "2038132" },
+    { rol: "QA / Revisor",              nombre: "Valeria Giselle Rodríguez Trinidad", matricula: "1851037" }
   ]
 };
