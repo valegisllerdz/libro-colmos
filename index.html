@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f3a63">
+  <title>Libro Digital de los Colmos</title>
+  <meta name="description" content="Libro digital ilustrado de 18 colmos sobre Scrum, PMBOK y prácticas ágiles. Equipo 5, UANL FIME.">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="libro" id="libro">
+    <header class="barra-sup">
+      <a class="btn-indice" href="#p3" aria-label="Ir al índice">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Índice
+      </a>
+      <div class="progreso" aria-hidden="true"><span id="barra"></span></div>
+    </header>
+
+    <main id="hoja" class="hoja" tabindex="-1" aria-live="polite"></main>
+
+    <nav class="barra-inf" aria-label="Navegación del libro">
+      <button id="ant" class="flecha" aria-label="Página anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <span id="num" class="num">Página 1 de 25</span>
+      <button id="sig" class="flecha" aria-label="Página siguiente">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </nav>
+  </div>
+
+  <noscript><p style="padding:24px">Este libro necesita JavaScript activado para mostrarse.</p></noscript>
+  <script src="contenido.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

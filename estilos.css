@@ -1,0 +1,215 @@
+/* Guía de estilo (HU-03): 5 colores + 2 tipografías, iguales a la presentación */
+:root {
+  --azul:    #1f3a63;
+  --naranja: #e4572e;
+  --verde:   #2b7a69;
+  --crema:   #f6efe2;
+  --dorado:  #f2b134;
+  --naranja-texto: #c9481f; /* mismo naranja, un tono más oscuro para texto blanco encima (contraste 4.7:1, HU-07) */
+
+  --tinta:   #1d2433;   /* texto (neutro) */
+  --papel:   #ffffff;   /* fondo de página (neutro) */
+  --tenue:   #5e6474;
+
+  --serif: Georgia, "Cambria", "Times New Roman", serif;
+  --sans:  "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --acento: var(--naranja);
+  --radio: 16px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--azul);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: 18px;              /* HU-07: legible sin zoom en 6" */
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ---------- Marco del libro ---------- */
+.libro {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--papel);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+@media (min-width: 560px) {
+  body { display: grid; place-items: center; padding: 24px; }
+  .libro {
+    height: min(860px, calc(100dvh - 48px));
+    width: 420px;
+    border-radius: 36px;
+    box-shadow: 0 0 0 10px #10213b, 0 24px 60px rgba(0,0,0,.45);
+  }
+}
+
+.barra-sup {
+  display: flex; align-items: center; gap: 14px;
+  padding: max(12px, env(safe-area-inset-top)) 18px 10px;
+}
+.btn-indice {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 15px; font-weight: 600; color: var(--azul);
+  text-decoration: none;
+  padding: 8px 12px; border-radius: 999px; background: var(--crema);
+}
+.btn-indice svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.progreso { flex: 1; height: 6px; border-radius: 3px; background: var(--crema); overflow: hidden; }
+.progreso span { display: block; height: 100%; width: 0; background: var(--acento); transition: width .3s ease; }
+
+.hoja {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 22px 16px;
+  outline: none;
+  display: flex; flex-direction: column;
+}
+.hoja.entra-der { animation: entraDer .28s ease-out; }
+.hoja.entra-izq { animation: entraIzq .28s ease-out; }
+@keyframes entraDer { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes entraIzq { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .hoja.entra-der, .hoja.entra-izq { animation: none; } }
+
+.barra-inf {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 18px max(14px, env(safe-area-inset-bottom));
+}
+.flecha {
+  width: 52px; height: 48px; border: 0; border-radius: 14px;
+  background: var(--crema); color: var(--tinta); cursor: pointer;
+  display: grid; place-items: center;
+}
+.flecha svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.flecha:disabled { opacity: .35; cursor: default; }
+.flecha:focus-visible, .btn-indice:focus-visible, .hoja a:focus-visible { outline: 3px solid var(--dorado); outline-offset: 2px; }
+.num { font-size: 15px; color: var(--tenue); }
+
+/* ---------- Elementos comunes ---------- */
+.etiqueta {
+  font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--acento); margin: 6px 0 12px;
+}
+h1, h2, h3 { font-family: var(--serif); color: var(--azul); line-height: 1.15; margin: 0; }
+
+/* ---------- Página de colmo ---------- */
+.ilustracion {
+  background: color-mix(in srgb, var(--dorado) 22%, var(--papel));
+  border-radius: var(--radio);
+  padding: 18px 12px 12px;
+  display: grid; justify-items: center; gap: 6px;
+}
+.ilustracion svg { width: 132px; height: 132px; }
+.ilustracion img { width: 100%; max-height: 220px; object-fit: contain; border-radius: 10px; }
+.ilustracion figcaption { font-size: 14px; color: var(--tenue); }
+
+.globo {
+  position: relative;
+  border-radius: var(--radio);
+  padding: 16px 18px;
+  margin-top: 18px;
+  font-size: 20px;
+}
+.globo.pregunta {
+  background: var(--crema);
+  border: 1.5px solid #6b6253;
+  font-weight: 700;
+}
+.globo.pregunta::after, .globo.remate::after {
+  content: ""; position: absolute; top: -10px; width: 18px; height: 18px;
+  transform: rotate(45deg); background: inherit;
+}
+.globo.pregunta::after { left: 30px; border-left: 1.5px solid #6b6253; border-top: 1.5px solid #6b6253; }
+.globo.remate {
+  background: var(--acento);
+  color: #fff;
+  font-style: italic;
+  margin-left: 18px;
+}
+.globo.remate::after { right: 30px; }
+
+.borrador {
+  margin-top: auto; padding-top: 14px;
+  font-size: 13px; color: var(--tenue);
+}
+.borrador b { color: var(--naranja); }
+
+/* ---------- Portada ---------- */
+.portada {
+  margin: -8px -22px -16px; padding: 28px 24px;
+  flex: 1;
+  background: var(--azul); color: #fff;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.portada .inst { font-size: 14px; color: var(--dorado); font-weight: 600; letter-spacing: .02em; }
+.portada h1 { color: #fff; font-size: 40px; margin-top: auto; }
+.portada .sub { font-size: 19px; color: #dfe6f1; }
+.portada .globos { display: grid; gap: 10px; margin: 18px 0; }
+.portada .g { border-radius: 14px; padding: 12px 14px; font-size: 16px; }
+.portada .g1 { background: var(--crema); color: var(--tinta); font-weight: 700; margin-right: 40px; }
+.portada .g2 { background: var(--naranja-texto); color: #fff; font-style: italic; margin-left: 40px; }
+.portada .pie { margin-top: auto; font-size: 15px; color: #c9d3e3; }
+.portada .empezar {
+  align-self: flex-start;
+  background: var(--dorado); color: var(--azul);
+  font-weight: 700; text-decoration: none;
+  padding: 12px 20px; border-radius: 999px;
+}
+
+/* ---------- Cómo leer ---------- */
+.pasos { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 14px; }
+.pasos li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
+.pasos .n {
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--azul); color: #fff; font-weight: 700; font-family: var(--serif); font-size: 20px;
+}
+.pasos p { margin: 0; }
+.leyenda { display: grid; gap: 8px; margin-top: 20px; }
+.leyenda div { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+.leyenda i { width: 18px; height: 18px; border-radius: 5px; display: inline-block; }
+
+/* ---------- Índice ---------- */
+.indice { display: grid; gap: 16px; margin-top: 14px; }
+.indice .cap { border-radius: var(--radio); overflow: hidden; background: var(--crema); }
+.indice .cap > a {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px; color: #fff; text-decoration: none;
+  font-family: var(--serif); font-weight: 700; font-size: 19px;
+}
+.indice ol { list-style: none; margin: 0; padding: 4px 0; }
+.indice ol a {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 9px 16px; color: var(--tinta); text-decoration: none; font-size: 17px;
+}
+.indice ol a:active, .indice ol a:hover { background: rgba(0,0,0,.05); }
+.indice .pg { color: var(--tenue); font-variant-numeric: tabular-nums; }
+.indice .extra a { display: flex; justify-content: space-between; padding: 12px 16px; color: var(--azul); text-decoration: none; font-weight: 600; }
+
+/* ---------- Portada de capítulo ---------- */
+.cap-portada {
+  margin: -8px -22px -16px; padding: 30px 24px;
+  flex: 1; color: #fff; background: var(--acento);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.cap-portada .numcap { font-family: var(--serif); font-size: 96px; line-height: 1; opacity: .35; }
+.cap-portada h2 { color: #fff; font-size: 38px; }
+.cap-portada p { font-size: 19px; margin: 0; }
+.cap-portada svg { width: 120px; height: 120px; margin-top: auto; align-self: flex-end; opacity: .9; }
+.cap-portada .lista { font-size: 16px; opacity: .9; }
+
+/* ---------- Cierre ---------- */
+.cierre h2 { font-size: 30px; margin-bottom: 10px; }
+.creditos { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+.creditos li { background: var(--crema); border-radius: 12px; padding: 10px 14px; }
+.creditos .rol { font-size: 13px; font-weight: 700; color: var(--naranja); text-transform: uppercase; letter-spacing: .04em; }
+.creditos .nom { font-size: 17px; font-weight: 600; }
+.creditos .mat { font-size: 14px; color: var(--tenue); }
+.cierre .datos { font-size: 15px; color: var(--tenue); margin-top: 16px; }
+.cierre .volver { display: inline-block; margin-top: 14px; color: var(--azul); font-weight: 700; }
