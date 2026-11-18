@@ -303,3 +303,9 @@ button.globo { font: inherit; text-align: left; border: 0; width: calc(100% - 18
 .imp-pagina .indice ol { padding: 2px 0; }
 .imp-pagina .indice ol a { padding: 2px 14px; font-size: 14px; }
 .imp-pagina .indice .extra a { padding: 7px 14px; font-size: 14px; }
+.imp-pagina .cierre-cabeza { grid-template-columns: 64px 1fr; }
+.imp-pagina .cierre-cabeza .colmito { width: 64px; }
+.imp-pagina .cierre p { margin: 8px 0; }
+.imp-pagina .creditos li { padding: 5px 12px; }
+.imp-pagina .creditos .nom { font-size: 16px; }
+.imp-pagina .cierre .datos { margin-top: 8px; font-size: 13px; }
